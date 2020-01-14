@@ -1,0 +1,76 @@
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="topbar-opt">
+                    <el-button type="primary" size="small" icon="el-icon-plus" @click="add">添加</el-button>
+                </div>
+                <div class="topbar-opt">
+                    <el-button type="primary" size="small" icon="el-icon-delete" @click="fetchDel">批量删除</el-button>
+                </div>
+                <div class="topbar-item">
+                    姓名：
+                    <el-input style="width: 150px" placeholder="请输入姓名" size="small" v-model="search.name"></el-input>
+                </div>
+                <div class="topbar-item">
+                    选择：
+                    <el-select v-model="input3" style="width: 150px"  size="small" placeholder="请选择">
+                        <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="topbar-item" style="width: 80px;">
+                    <el-button type="primary" size="small" icon="el-icon-search" @click="getTableList(true)">查询</el-button>
+                </div>
+            </div>
+        </div>
+        <div class="data-wrap">
+            <div class="data-content">
+                <el-table
+                    :data="tableData"
+                    border
+                    @select="tableSelect"
+                    style="width: 100%; height: 10%;">
+                    <el-table-column
+                        type="selection"
+                        width="55">
+                    </el-table-column>
+                    <el-table-column
+                        prop="date"
+                        label="日期"
+                        width="180">
+                    </el-table-column>
+                    <el-table-column
+                        prop="name"
+                        label="姓名"
+                        width="180">
+                    </el-table-column>
+                    <el-table-column
+                        prop="address"
+                        label="地址">
+                    </el-table-column>
+                    <el-table-column
+                    label="操作"
+                    width="140">
+                    <template slot-scope="scope">
+                        <!-- <el-button type="text" size="small">查看</el-button> -->
+                        <el-button @click="editItem(scope.row)" type="text" size="small">编辑</el-button>
+                        <el-button @click="delItem(scope.row)" type="text" size="small">删除</el-button>
+                    </template>
+                    </el-table-column>
+                </el-table>
+                <el-pagination
+                    :page-sizes="[100, 200, 300, 400]"
+                    :page-size="search.pageSize"
+                    :current-page="search.curPage"
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="totalPage">
+                </el-pagination>
+            </div>
+            <bbbEdit :isAddProp="isAdd" ref="edit" :isShow.sync="isShow"/>
