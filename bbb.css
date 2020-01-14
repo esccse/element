@@ -1,0 +1,50 @@
+div{
+    .topbar {
+        background: #fff;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 6px 12px;
+        position: relative;
+        flex-wrap: wrap;
+        .topbar-left {
+            width: calc(~"100% - 90px");
+            float: left;
+        }
+        .topbar-right {
+            width: 90px;
+            float: right;
+        }
+        .topbar-item {
+            float: right;
+            height: 40px;
+            line-height: 40px;
+            width: 220px;
+            box-sizing: border-box;
+            margin-right: 10px;
+            margin-bottom: 4px;
+        }
+        .topbar-opt {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            box-sizing: border-box;
+            margin-right: 10px;
+            margin-bottom: 4px;
+        }
+    }
+    .data-wrap {
+        border-radius: 4px;
+        background: #fff;
+        margin-top: 14px;
+        border: 1px solid #ccc;
+        height: 780px; // 两行操作栏时 用这个高度
+        // height: 810px; // 一行操作栏时 用这个高度
+        box-sizing: border-box;
+    }
+    .data-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
