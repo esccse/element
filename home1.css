@@ -1,0 +1,42 @@
+ @head_height: 50px;
+    @nav_width: 230px;
+    .main-page {
+        width: 100%;
+        .head {
+            height: @head_height;
+            line-height: @head_height;
+            border-bottom: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .content-wrap {
+            overflow: hidden;
+            height: calc(~"100% - @{head_height}");
+        }
+        .left.nav {
+            width: @nav_width;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            /deep/ .tac.el-row, /deep/ .el-col, /deep/ .el-menu{
+                height: 100%;
+            }
+        }
+        .right {
+            width: calc(~"100% - @{nav_width}");
+            float: left;
+            height: 100%;
+            .opened-nav {
+                height: 39px;
+                overflow: hidden;
+                border: none;
+                box-shadow: unset;
+                border-bottom: 1px solid #ccc;
+            }
+            .content {
+                height: calc(~"100% - 39px");
+                box-sizing: border-box;
+                padding: 14px;
+                background: #f3f3f4;
+            }
+        }
+    }
